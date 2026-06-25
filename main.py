@@ -2,9 +2,13 @@ import sqlite3
 import os
 import json
 from fastmcp import FastMCP
+import sys
 
-# File Paths
-DB_PATH = os.path.join(os.path.dirname(__file__), "expenses.db")
+if os.name != 'nt':
+    DB_PATH = "/tmp/expenses.db"
+else:
+    DB_PATH = "expenses.db"
+    
 CATEGORIES_PATH = os.path.join(os.path.dirname(__file__), "categories.json")
 
 mcp = FastMCP(name="ExpenseTracker")
